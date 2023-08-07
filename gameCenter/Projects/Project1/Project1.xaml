@@ -5,23 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gameCenter.Projects.Project1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1400">
+        Title="MainWindow" Height="800" Width="1400">
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black"/>
-                <GradientStop Color="#FFCAC4EF" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <StackPanel x:Name="mainContainer">
-            <StackPanel.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="1"/>
-                    <GradientStop Color="#FF7F899A" Offset="0.508"/>
-                </LinearGradientBrush>
-            </StackPanel.Background>
-            <Label x:Name="addUserTitle"
-                Content="Add User" 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="mainContainer" Grid.Row="0">
+            <Label x:Name="MainTitle"
+                Content="Users Manager" 
                 HorizontalContentAlignment="Center" 
                 Background="AliceBlue"
                 FontWeight="Bold"
@@ -29,24 +21,100 @@
             />
             <StackPanel x:Name="addUserPanel" Width="300" >
                 <StackPanel x:Name="userNamePanel">
-                    <Label Content="user Name" Foreground="Azure"/>
-                    <TextBox x:Name="userName" BorderThickness="3" InputScope="PersonalFullName" />
-                </StackPanel>
-                <StackPanel x:Name="userEmailPanel" Margin="0,10,0,0">
-                    <Label Content="user Email" Foreground="Azure"/>
-                    <TextBox x:Name="userEmail" BorderThickness="3">
+                    <Label Content="user Name" />
+                    <TextBox 
+                        x:Name="UserName" 
+                        BorderThickness="1,1,1,2"
+                        Height="25" LostFocus="On_UserName_LostFocus"
+                    >
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
                     </TextBox>
                 </StackPanel>
-                <Button 
-                    Content="Add"
-                    Width="100"
-                    Margin="0,30,0,30" Click="Button_Click">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
+                <StackPanel x:Name="userEmailPanel" Margin="0,10,0,0">
+                    <Label Content="user Email" />
+                    <TextBox 
+                        x:Name="UserEmail" 
+                        BorderThickness="1,1,1,2" 
+                        Height="25"
+                        LostFocus="On_UserEmail_LostFocus">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button 
+                        x:Name="AddButton"
+                        Content="Add"
+                        Width="80"
+                        Height="30"
+                        BorderThickness="0"
+                        Background= "#FF88D289"
+                        Margin="10,30,20,30" Click="On_Add_Button_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button 
+                        x:Name="RemoveButton"
+                        Content="Remove"
+                        BorderThickness="0"
+                        Width="80"
+                        Margin="0,30,0,30" Click="On_Remove_Button_Click" Background="#FFD26B6B">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button 
+                        x:Name="UpdateButton"
+                        Content="Update"
+                        BorderThickness="0"
+                        Width="80"
+                        Margin="20,30,0,30" Background="#FF67A6E0" Click="On_Update_Button_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button 
+                        x:Name="LogButton"
+                        Content="Login/out"
+                        BorderThickness="0"
+                        Width="80"
+                        Margin="10,0,20,30" Background="#FF88D289" Click="On_ToggleUserLog_Button_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                    <Button 
+                        x:Name="FreezeButton"
+                        Content="Freeze/Un-Freeze"
+                        Height="30"
+                        BorderThickness="0"
+                        Background= "#FFD26B6B"
+                        Margin="0,0,0,30" Click="On_ToogleFreezeUser_Button_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </WrapPanel>
             </StackPanel>
             <StackPanel x:Name="usersListContainer">
                 <Label x:Name="usersListTitle"
@@ -56,7 +124,8 @@
                     FontWeight="Bold"
                     FontSize="23"
                 />
-                <DataGrid x:Name="usersList"
+                <DataGrid 
+                    x:Name="UsersDataGrid"
                     HorizontalAlignment="Center"
                     Margin="0,30,0,0"
                     ColumnWidth="100"
@@ -64,7 +133,9 @@
                     HeadersVisibility="Column"
                     ScrollViewer.CanContentScroll="True"
                     ScrollViewer.VerticalScrollBarVisibility="Auto"
-                    MaxHeight="200"
+                    MaxHeight="200" 
+                    SelectionChanged="On_UsersDataGrid_SelectionChanged"
+                    IsReadOnly="True"
                 >
                     <DataGrid.ColumnHeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
@@ -77,6 +148,16 @@
                 </DataGrid>
             </StackPanel>
         </StackPanel>
+        <Label 
+            x:Name="Footer"
+            VerticalContentAlignment="Center"
+            Grid.Row="1"
+            Content="all rights reserved to me (c)" 
+            HorizontalContentAlignment="Center" 
+            Background="AliceBlue"
+            FontWeight="Bold"
+            FontSize="12"
+            />
 
     </Grid>
 </Window>
