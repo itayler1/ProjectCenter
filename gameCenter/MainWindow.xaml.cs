@@ -1,19 +1,38 @@
-﻿using gameCenter.Projects.Project1;
+﻿using gameCenter.Projects;
+using gameCenter.Projects.CurrencyConverter;
+using gameCenter.Projects.UserManager;
+using gameCenter.Projects.SimonSays;
+using gameCenter.Projects.TicTacToe;
+using gameCenter.Projects.TodoList;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
+using gameCenter.Projects._2048game;
+using System.Collections.Generic;
 
 namespace gameCenter
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
+
     {
         public MainWindow()
         {
             InitializeComponent();
+            DispatcherTimer clock = new()
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+
+            clock.Tick += ShowCurrentDate!;
+            clock.Start();
+
+        }
+
+        private void ShowCurrentDate(object sender, EventArgs e)
+        {
+            DateLabel.Content = DateTime.Now.ToString("dddd, dd, MMMM yyyy HH:mm:ss");
         }
 
         private void Image_MouseEnter(object sender, MouseEventArgs e)
@@ -22,30 +41,113 @@ namespace gameCenter
             image.Opacity = 0.7;
             GameText.Content = (image.Name) switch
             {
-                "Image1" => "a User Management System",
-                "Image2" => "Game No. 2 is a game about lorm ipsum & happy birthday",
-                "Image3" => "Game No. 3 is a game about lorm ipsum & happy birthday",
-                "Image4" => "Game No. 4 is a game about lorm ipsum & happy birthday",
-                "Image5" => "Game No. 5 is a game about lorm ipsum & happy birthday",
-                "Image6" => "Game No. 6 is a game about lorm ipsum & happy birthday",
-                _ => "please pick a game"
+                "Image1" => "User Management System",
+                "Image2" => "To Do List Task Manager",
+                "Image3" => "Currency Converter",
+                "Image4" => "Simon Says Game",
+                "Image5" => "TicTacToe Game",
+                "Image6" => "2048 Game",
+                _ => "Please pick a project"
             };
         }
+
+
 
         private void Image_MouseLeave(object sender, MouseEventArgs e)
         {
             (sender as Image)!.Opacity = 1;
-            GameText.Content = "please pick a game";
+            GameText.Content = "Please pick a project";
         }
 
         private void Image1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Project1 project1 = new();
-            Hide();
-            project1.ShowDialog();
-            Show();
+            UserManagerView UserManagementSystem = new();
+            projectPresentationPage presentetion = new();
+            presentetion.OnStart("User Management System" , "The mini-project is a standalone user\n" +
+                "management system that provides\n" +
+                "a comprehensive interface for managing user information.\n" +
+                " It enables administrators to view, add, remove, update, toggle login status,\n" +
+                "and toggle freeze status for users.\n" +
+                "The user details are displayed in a DataGrid,\n" +
+                "and administrators can interact with the users using various buttons and input fields.",
+                Image1.Source, UserManagementSystem);
+            presentetion.ShowDialog();
         }
 
-        
+        private void Image2_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            TodoList toDoList = new();
+            projectPresentationPage presentetion = new();
+            presentetion.OnStart("To Do List Task Manager", "The mini-project is a straightforward to-do list\n" +
+                "application facilitating task management.\n" +
+                "Users can add, edit, delete, and toggle the completion status of tasks.\n" +
+                "Each task is represented in a ListBox with checkboxes\n" +
+                "for completion and editable text for descriptions.\n" +
+                "Notably, tasks can be saved and are automatically loaded from a file.", Image2.Source, toDoList, usesFileIO:true);
+            presentetion.ShowDialog();
+        }
+        private void Image3_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            CurrencyConverterView currencyProject = new();
+            projectPresentationPage presentetion = new();
+            presentetion.OnStart("Currency Converter", "The mini-project is a currency converter application that\n" +
+                "facilitates the conversion of one currency to another based\n" +
+                "on real-time exchange rates obtained through HTTP requests.\n" +
+                "Users can input the amount to be converted, choose the source currency,\n" +
+                "select the target currency, and then click the \"Convert\" button.\n" +
+                "The converted amount is displayed along with the currencies involved in the conversion.\n" +
+                "The application fetches exchange rates asynchronously through\n" +
+                "HTTP requests and handles errors appropriately.",
+                Image3.Source, currencyProject, usesAPI: true);
+            presentetion.ShowDialog();
+        }
+
+        private void Image4_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            SimonSaysView simonGame = new();
+            projectPresentationPage presentetion = new();
+            presentetion.OnStart("Simon Says", "The Simon Says game is a classic\n" +
+                "memory and pattern recognition challenge with an interactive\n" +
+                "and visually appealing user interface. Players must replicate a sequence of colored buttons\n" +
+                "(Red, Yellow, Green, Blue) generated by the game to test\n" +
+                "their memory skills. The game offers adjustable difficulty\n" +
+                "levels and features a score system. Top scores are\n" +
+                "loaded from a file, providing a benchmark for players.\n" +
+                "After completing a round, players can submit their scores.\n" +
+                "There's also a difficulty selector that will affect the speed of the game\n" +
+                "and score the player accoridngly.", Image4.Source, simonGame, usesFileIO:true);
+            presentetion.ShowDialog();
+        }
+
+        private void Image5_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            TicTacToeView tic = new();
+            projectPresentationPage presentetion = new();
+            presentetion.OnStart("Tic Tac Toe", "This mini-project is a simple\n" +
+                "implementation of the classic Tic-Tac-Toe game.\n" +
+                "Players take turns clicking on a 3x3 grid of buttons,\n" +
+                "aiming to align three of their respective symbols ('X' or 'O') horizontally,\n" +
+                "vertically, or diagonally to win the game.\n" +
+                "The game checks for a winner or a draw after each move,\n" +
+                "displaying a corresponding message box.\n" +
+                "The interface is created using XAML, and the logic is implemented in C#.", Image5.Source, tic);
+            presentetion.ShowDialog();
+        }
+
+        private void Image6_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            _2048View game = new();
+            projectPresentationPage presentetion = new();
+            presentetion.OnStart("2048 Game", "This project is a 2048 game implementationin C# using the WPF framework.\n" +
+                "The game features a grid where numbered tiles move as the player makes a move.\n" +
+                "The objective is to combine tiles with the same number to reach the elusive 2048 tile.\n" +
+                "The game dynamically updates the UI with each move,\n" +
+                "displaying the current score and colored tiles based on their values.\n" +
+                "Users can play using arrow keys\n" +
+                " and the game ends either when the player wins\n" +
+                "by reaching the 2048 tile or when there are no more valid moves.",
+                Image6.Source, game);
+            presentetion.ShowDialog();
+        }
     }
 }

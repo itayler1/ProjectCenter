@@ -1,0 +1,32 @@
+﻿<Window x:Class="gameCenter.Projects.TodoList.TodoList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gameCenter.Projects.TodoList"
+        mc:Ignorable="d"
+        Title="TodoList" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/backGround.jpg" Opacity="0.4"/>
+        </Grid.Background>
+        <ListBox Name="listTasks" Margin="10,10,10,50" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="chkTask" IsChecked="{Binding IsComplete}" Click="OnTaskToggled" Width="20"/>
+                        <TextBlock Name="txtTaskDescription" Text="{Binding Description}" MouseLeftButtonDown="OnTextBlockMouseLeftButtonDown" Width="300"/>
+                        <TextBox Name="editTaskDescription" Width="300" Visibility="Collapsed"/>
+                        <Button Content="Save" Name="btnSave" Visibility="Collapsed" Click="OnSaveEdit"/>
+                        <Button x:Name="btnDelete" Content="Delete" Visibility="Collapsed" Click="OnDelete"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <TextBox Name="txtNewTask" Margin="10,0,405,10" Height="30" VerticalAlignment="Bottom" />
+        <Button Content="Add Task" Margin="400,0,289,10" Height="30" VerticalAlignment="Bottom" Click="OnAddTask"/>
+        <Button Content="Save List" Margin="679,0,10,10" Height="30" VerticalAlignment="Bottom" Click="SaveList"/>
+
+    </Grid>
+</Window>

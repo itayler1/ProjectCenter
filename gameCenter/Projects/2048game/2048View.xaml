@@ -1,0 +1,80 @@
+﻿<Window x:Class="gameCenter.Projects._2048game._2048View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gameCenter.Projects._2048game"
+        mc:Ignorable="d"
+        Title="2048" Height="775" Width="450"
+        ResizeMode="NoResize">
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/backGround.jpg" Opacity="0.2" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Border Panel.ZIndex="2" Grid.Row="1" Height="150" Width="300" Margin="75,82,75,164" Background="AliceBlue" BorderBrush="Beige" BorderThickness="5" Visibility="Collapsed"
+                x:Name="gameOverBorder">
+        <TextBlock
+                    Margin="40"
+                    x:Name="gameOverText"
+                    Text="Game Over"
+                    TextAlignment="Center"
+                    FontSize="35"
+                    FontWeight="ExtraBlack"/>
+        </Border>
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Button
+            x:Name="newGameBtn" Content="New Game" Grid.Row="0" Background="Beige" FontWeight="Bold" Click="Button_Click" Width="100" Height="50"/>
+
+            <TextBlock x:Name="ScoreText" Text="Score: 0" TextAlignment="Center" Grid.Row="1"
+                   FontSize="20" Margin="148,25,148,25"/>
+        </Grid>
+
+
+        <Border BorderBrush="DarkCyan" BorderThickness="7" Grid.Row="1" Background="LightCoral">
+            <Grid x:Name="gameGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+            </Grid>
+
+        </Border>
+
+        <Border Grid.Row="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="How to play:" FontSize="17" FontWeight="Bold"/>
+                <TextBlock Grid.Row="2" FontSize="11" FontWeight="Bold">
+                    Use the arrow keys to move the tiles around and combine tiles of the same number. <LineBreak/>
+                    Every move will spawn one new tile that has a 2 or 4 value. <LineBreak/>
+                    Gain points by combining bigger and bigger numbers! <LineBreak/>
+                    Getting a tile to 2048 wins the game! <LineBreak/> <LineBreak/>
+                    Filling the board up with tiles with no more valid moves will lose the game.
+                </TextBlock>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -8,13 +8,60 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\square1.jpeg" />
-    <None Remove="Images\square2.png" />
+    <Compile Remove="fonts\**" />
+    <EmbeddedResource Remove="fonts\**" />
+    <None Remove="fonts\**" />
+    <Page Remove="fonts\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\square1.jpeg" />
-    <Resource Include="Images\square2.png" />
+    <None Remove="Images\2048icon.png" />
+    <None Remove="Images\APIicon.png" />
+    <None Remove="Images\backGround.jpg" />
+    <None Remove="Images\cSHARPicon.png" />
+    <None Remove="Images\CurrencyConverterIcon.png" />
+    <None Remove="Images\FileIOicon.png" />
+    <None Remove="Images\SimonSaysIcon.png" />
+    <None Remove="Images\square1.jpeg" />
+    <None Remove="Images\square2.png" />
+    <None Remove="Images\TicTacToeIcon.png" />
+    <None Remove="Images\ToDoListIcon.png" />
+    <None Remove="Images\UserManagerIcon.png" />
+    <None Remove="Images\WPFicon.png" />
+    <None Remove="Images\XAMLicon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\2048icon.png" />
+    <Resource Include="Images\APIicon.png" />
+    <Resource Include="Images\cSHARPicon.png" />
+    <Resource Include="Images\CurrencyConverterIcon.png" />
+    <Resource Include="Images\backGround.jpg" />
+    <Resource Include="Images\FileIOicon.png" />
+    <Resource Include="Images\SimonSaysIcon.png" />
+    <Resource Include="Images\TicTacToeIcon.png" />
+    <Resource Include="Images\ToDoListIcon.png" />
+    <Resource Include="Images\UserManagerIcon.png" />
+    <Resource Include="Images\WPFicon.png" />
+    <Resource Include="Images\XAMLicon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Projects\SimonSays\Assets\Sounds\Ding1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Projects\SimonSays\Assets\Sounds\Ding2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Projects\SimonSays\Assets\Sounds\Ding3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Projects\SimonSays\Assets\Sounds\Ding4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Projects\SimonSays\Assets\Sounds\WrongBuzz.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

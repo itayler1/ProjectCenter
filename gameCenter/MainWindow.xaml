@@ -5,60 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gameCenter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1400">
+        Title="ProjectCenter_MainWindow" Height="800" Width="1400"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
             <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition Height="0.5*"></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/backGround.jpg" Opacity="0.2"/>
+        </Grid.Background>
 
         <Label x:Name="addUserTitle"
                Grid.Column="0"
                Grid.Row="0"
-               Grid.ColumnSpan="3"
-               VerticalContentAlignment="Center"
-               Content="Game center" 
+               VerticalContentAlignment="top"
+               Content="Project center" 
                HorizontalContentAlignment="Center" 
-               Background="AliceBlue"
+               Grid.ColumnSpan="5"
                FontWeight="Bold"
                FontSize="60"
+               Background="AliceBlue"
+               FontFamily="{StaticResource DefaultFont}"
         />
 
         <Label 
-            x:Name="GameText"
-            Content="please pick a game" 
-            Grid.Row="1" 
+            x:Name="GamesLabel"
+            FontWeight="Bold"
+            Content="Games" 
+            Grid.Row="1"
             Grid.Column="1" 
             VerticalAlignment="Center" 
             HorizontalAlignment="Center"
             FontSize="26"
+            FontFamily="{StaticResource DefaultFont}"
         />
 
-        <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image x:Name="Image1" Source="/Images/square1.jpeg" Width="150" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image1_MouseLeftButtonUp"/>
-            <Image x:Name="Image2" Source="/Images/square2.png" Width="150" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave"/>
-            <Image x:Name="Image3" Source="/Images/square1.jpeg" Width="150" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave"/>
-            <Image x:Name="Image4" Source="/Images/square2.png" Width="150" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave"/>
-            <Image x:Name="Image5" Source="/Images/square1.jpeg" Width="150" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave"/>
-            <Image x:Name="Image6" Source="/Images/square2.png" Width="150" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave"/>
+        <Label 
+            x:Name="ProjectsLabel"
+            FontWeight="Bold"
+            Content="General projects" 
+            Grid.Row="1"
+            Grid.Column="2" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"
+            FontSize="26"
+            FontFamily="{StaticResource DefaultFont}"
+        />
+
+        <Label             x:Name="DateLabel"            Content="Date"             Grid.Row="0"             Grid.Column="1"             Grid.ColumnSpan="2"             HorizontalContentAlignment="Center"            VerticalContentAlignment="Bottom"             FontSize="20"            FontFamily="{StaticResource DefaultFont}"        />
+        <Label             x:Name="GameText"            Content="Please select a project"             Grid.Row="2"             Grid.Column="0"             Grid.ColumnSpan="4"            Height="50"            Background="AliceBlue"            HorizontalContentAlignment="Center"            VerticalContentAlignment="Center"            FontSize="20"            FontFamily="{StaticResource DefaultFont}"
+        />
+
+        <WrapPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top"
+         >
+            <Image x:Name="Image1" Source="/Images/UserManagerIcon.png" Width="100" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image1_MouseLeftButtonUp"/>
+            <Image x:Name="Image2" Source="/Images/ToDoListIcon.png" Width="100" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image2_MouseLeftButtonUp"/>
+            <Image x:Name="Image3" Source="/Images/CurrencyConverterIcon.png" Width="100" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image3_MouseLeftButtonUp"/>
+        </WrapPanel>
+        
+        <WrapPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Image x:Name="Image4" Source="/Images/SimonSaysIcon.png" Width="100" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image4_MouseLeftButtonUp"/>
+            <Image x:Name="Image5" Source="/Images/TicTacToeIcon.png" Width="100" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image5_MouseLeftButtonUp"/>
+            <Image x:Name="Image6" Source="/Images/2048icon.png" Width="100" Margin="20" MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" MouseLeftButtonUp="Image6_MouseLeftButtonUp" />
         </WrapPanel>
 
-        <Label x:Name="Footer"
-               Grid.Column="0"
-               Grid.Row="3"
-               Grid.ColumnSpan="3"
-               VerticalContentAlignment="Center"
-               HorizontalContentAlignment="Center" 
-               Background="AliceBlue"
-               FontWeight="Bold"
-               FontSize="23"
-        />
+
+
+
     </Grid>
 </Window>

@@ -1,0 +1,63 @@
+﻿<Window x:Class="gameCenter.Projects.projectPresentationPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gameCenter.Projects"
+        mc:Ignorable="d"
+        Title="projectPresentationPage" Height="500" Width="900"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>            <RowDefinition Height="0.4*" />            <RowDefinition Height="1.5*" />            <RowDefinition Height="0.3*" />        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/backGround.jpg" Opacity="0.1"/>
+        </Grid.Background>
+
+        <Border Background="AliceBlue" VerticalAlignment="Center" BorderBrush="LightGray" BorderThickness="2">
+            <WrapPanel HorizontalAlignment="Center">
+                <StackPanel>
+                    <Label
+                x:Name="TitleLabel"
+                Content="Project Center by Itay Lerner" 
+                FontFamily="{StaticResource DefaultFont}"
+                FontSize="20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Background="AliceBlue"
+            />
+                    <Label 
+                Content="Press the mini-project's icon to continue"
+                FontWeight="DemiBold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+            />
+                </StackPanel>
+            </WrapPanel>
+        </Border>
+
+
+        <TextBlock             x:Name="ProjectText"            Grid.Row="1"            VerticalAlignment="Top"            HorizontalAlignment="Left"            Margin="180,67,0,0"            FontSize="16"            FontFamily="{StaticResource DefaultFont}"            FontWeight="DemiBold"        />
+        <Image x:Name="ProjectImage"
+               Grid.Row="1"
+               Height="75"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="81,67,0,0"
+               MouseLeftButtonDown="ProjectImage_MouseLeftButtonUp"
+               MouseEnter="Image_MouseEnter"
+               MouseLeave="Image_MouseLeave"/>
+        <Label Content="Technologies used:" Grid.Row="2" Margin="125,17,600,16" FontSize="15" Panel.ZIndex="999" FontWeight="SemiBold"/>
+        <Border Background="AliceBlue" Grid.Row="2" BorderBrush="LightGray" BorderThickness="2">
+            <WrapPanel Width='315' Margin="314,0,266,0">
+                <Image Source="/Images/FileIOicon.png" x:Name="fileIOicon"/>
+                <WrapPanel>
+                    <Image Source="/Images/WPFicon.png" />
+                    <Image Source="/Images/cSHARPicon.png"/>
+                    <Image Source="/Images/XAMLicon.png"/>
+                </WrapPanel>
+                <Image Source="/Images/APIicon.png" x:Name="apiICon"/>
+            </WrapPanel>
+        </Border>
+
+    </Grid>
+</Window>

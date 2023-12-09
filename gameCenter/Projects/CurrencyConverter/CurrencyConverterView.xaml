@@ -1,0 +1,73 @@
+﻿<Window x:Class="gameCenter.Projects.CurrencyConverter.CurrencyConverterView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gameCenter.Projects.CurrencyConverter"
+        mc:Ignorable="d"
+        Title="CurrencyConverterView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.15*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.15*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.35*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/backGround.jpg" Opacity="0.2"/>
+        </Grid.Background>
+
+        <Border Grid.ColumnSpan="3" Background="AliceBlue">
+            <Label
+                x:Name="MainTitle"
+                Content="Currency Convertion"
+                HorizontalAlignment="Center"
+                Grid.Column = "1"
+                FontWeight="Black"
+                FontSize="30"/>
+        </Border>
+
+        <Grid
+            Grid.Row="1"
+            Margin="92,39,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" Grid.ColumnSpan="2" Height="255" Width="346">
+
+            <Label Content="Enter an amount to convert" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,21,0,0"/>
+            <Label Content="Amount:" Margin="10,47,0,-37" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+            <TextBox Name="AmountTextBox" Width="150" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,65,0,0"/>
+
+            <Label Content="Choose the curreny you wish to convert from" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,114,0,0"/>
+            <Label Content="From Currency:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,140,0,0"/>
+
+            <ComboBox Name="FromCurrencyComboBox" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,158,0,0"/>
+
+            <Label Content="Choose the curreny you wish to convert to" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,189,0,0"/>
+            <Label Content="To Currency:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,215,0,0"/>
+
+            <ComboBox Name="ToCurrencyComboBox" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,233,0,0"/>
+
+            <Button Name="btnConvert" Width="100" Height="30" Content="Convert"
+             Click="btnConvert_Click" Background="LightYellow" Margin="0,65,60,0"
+            HorizontalAlignment="Right" VerticalAlignment="Top"/>
+
+        </Grid>
+
+        <Border
+            Background="AliceBlue"
+            Grid.Column="1"
+            Grid.Row="1" Margin="390,55,10,117"
+            BorderBrush="DarkSlateGray"
+            BorderThickness="5"
+            >
+            <TextBlock Name="txtResult" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,54,0,0" 
+             FontWeight="Bold"
+             TextAlignment="Center"/>
+        </Border>
+
+    </Grid>
+</Window>

@@ -7,15 +7,15 @@ using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.Models;
 
-namespace gameCenter.Projects.Project1
+namespace gameCenter.Projects.UserManager
 {
-    public partial class Project1 : Window
+    public partial class UserManagerView : Window
     {
         private readonly UsersListHandler _listHandler;
         private readonly List<User> _users;
 
         private int _selectedUserId;
-        public Project1()
+        public UserManagerView()
         {
             _listHandler = new();
             _users = _listHandler.UsersList;
